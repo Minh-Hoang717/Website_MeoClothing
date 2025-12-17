@@ -61,6 +61,7 @@ try {
         case 'payments':
             require_once 'models/Payment.php';
             require_once 'models/Order.php';
+            require_once 'models/User.php'; // Added for new users table
             require_once 'controllers/PaymentController.php';
             $controller = new PaymentController($db);
             $controller->processRequest();

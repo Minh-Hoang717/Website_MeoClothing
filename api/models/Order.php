@@ -10,11 +10,12 @@ class Order extends BaseModel {
     
     /**
      * Get order with customer info
+     * Updated: Uses users table instead of customers
      */
     public function getOrderWithCustomer($orderId) {
-        $query = "SELECT o.*, c.full_name, c.phone_number, c.email, c.address 
+        $query = "SELECT o.*, u.full_name, u.phone, u.email, u.address 
                   FROM {$this->table} o
-                  LEFT JOIN customers c ON o.customer_id = c.customer_id
+                  LEFT JOIN users u ON o.user_id = u.user_id
                   WHERE o.order_id = :orderId";
         
         $stmt = $this->conn->prepare($query);
@@ -112,12 +113,13 @@ class Order extends BaseModel {
     
     /**
      * Get orders by customer
+     * Updated: Uses user_id instead of customer_id
      */
     public function getOrdersByCustomer($customerId, $page = 1, $pageSize = 20) {
         $offset = ($page - 1) * $pageSize;
         
         $query = "SELECT * FROM {$this->table} 
-                  WHERE customer_id = :customerId 
+                  WHERE user_id = :customerId 
                   ORDER BY order_date DESC 
                   LIMIT :limit OFFSET :offset";
         
@@ -132,13 +134,14 @@ class Order extends BaseModel {
     
     /**
      * Get orders by status
+     * Updated: Uses users table
      */
     public function getOrdersByStatus($status, $page = 1, $pageSize = 20) {
         $offset = ($page - 1) * $pageSize;
         
-        $query = "SELECT o.*, c.full_name, c.phone_number 
+        $query = "SELECT o.*, u.full_name, u.phone 
                   FROM {$this->table} o
-                  LEFT JOIN customers c ON o.customer_id = c.customer_id
+                  LEFT JOIN users u ON o.user_id = u.user_id
                   WHERE o.status = :status 
                   ORDER BY o.order_date DESC 
                   LIMIT :limit OFFSET :offset";

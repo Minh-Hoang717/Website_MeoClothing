@@ -112,6 +112,7 @@ class PaymentController extends BaseController {
     /**
      * POST /api/payments/process
      * Create payment and redirect to VNPay
+     * Updated: Works with users table
      */
     private function processPayment() {
         // Validate input
@@ -125,7 +126,7 @@ class PaymentController extends BaseController {
         try {
             $orderId = $this->requestData['order_id'];
             
-            // Get order
+            // Get order with user info (updated from customer)
             $order = $this->orderModel->getOrderWithCustomer($orderId);
             
             if (!$order) {
