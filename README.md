@@ -163,13 +163,13 @@ meo-clothing-store/
 
 ```sql
 INSERT INTO users (username, password, full_name, email, role, created_at)
-VALUES ('admin', '$2y$10$...', 'Admin User', 'admin@store.com', 'admin', NOW());
+VALUES ('admin1', '$2y$10$...', 'Admin User', 'admin@store.com', 'admin', NOW());
 ```
 
 Password hash (bcrypt):
 
-- Username: `admin`
-- Password: `admin123` (hash: `$2y$10$N9qo8uLOickgx2ZMRZoMye4SAYy7wGvC8VkFTZhD9nfSPdPg.d2nW`)
+- Username: `admin1`
+- Password: `admin1` (hash: `$2y$10$N9qo8uLOickgx2ZMRZoMye4SAYy7wGvC8VkFTZhD9nfSPdPg.d2nW`)
 
 ---
 
