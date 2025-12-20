@@ -25,10 +25,7 @@ CREATE DATABASE meo_clothingstore CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_
 -- Mở phpMyAdmin hoặc dòng lệnh:
 mysql -u root -p meo_clothingstore < DataBase/meo_clothingstore.sql
 
--- 3. Thêm cột image_path cho 2 bảng (ĐẠO TRỌNG!)
-ALTER TABLE `products` ADD COLUMN `image_path` VARCHAR(255) DEFAULT NULL AFTER `original_price`;
-ALTER TABLE `productvariants` ADD COLUMN `image_path` VARCHAR(255) DEFAULT NULL AFTER `current_price`;
-```
+
 
 ### 2. **Cấu Hình File Config**
 
@@ -158,18 +155,8 @@ meo-clothing-store/
 ---
 
 ## 👤 Tài Khoản Admin Mẫu
-
-**Tạo tài khoản admin trong DB:**
-
-```sql
-INSERT INTO users (username, password, full_name, email, role, created_at)
-VALUES ('admin1', '$2y$10$...', 'Admin User', 'admin@store.com', 'admin', NOW());
-```
-
-Password hash (bcrypt):
-
-- Username: `admin1`
-- Password: `admin1` (hash: `$2y$10$N9qo8uLOickgx2ZMRZoMye4SAYy7wGvC8VkFTZhD9nfSPdPg.d2nW`)
+- Username: admin1
+- Password: admin1
 
 ---
 
